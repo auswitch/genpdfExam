@@ -5,14 +5,16 @@ const cors = require('cors');
 
 const pdfTemplate = require('./documents');
 
+const cmuOAuth = require('./cmuOauth');
 const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use('/cmuOAuth', cmuOAuth);
 app.post('/create-pdf', (req, res) => {
     pdf.create(pdfTemplate(req.body), {}).toFile('result.pdf', (err) => {
         if(err) {

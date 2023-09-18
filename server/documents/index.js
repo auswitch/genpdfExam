@@ -1,6 +1,6 @@
-module.exports = ({ name, price1, price2, receiptId }) => {
-    const today = new Date();
-return `
+module.exports = ({ name, faculty, price2, Id }) => {
+  const today = new Date();
+  return `
     <!doctype html>
     <html>
        <head>
@@ -86,10 +86,11 @@ return `
                    <td colspan="2">
                       <table>
                          <tr>
-                            <td class="title"><img  src="https://i2.wp.com/cleverlogos.co/wp-content/uploads/2018/05/reciepthound_1.jpg?fit=800%2C600&ssl=1"
-                               style="width:100%; max-width:156px;"></td>
+                        
                             <td>
-                               Datum: ${`${today.getDate()}. ${today.getMonth() + 1}. ${today.getFullYear()}.`}
+                               Date: ${`${today.getDate()}. ${
+                                 today.getMonth() + 1
+                               }. ${today.getFullYear()}.`}
                             </td>
                          </tr>
                       </table>
@@ -100,30 +101,21 @@ return `
                       <table>
                          <tr>
                             <td>
-                               Customer name: ${name}
+                               ชื่อ: ${name}
                             </td>
                             <td>
-                               Receipt number: ${receiptId}
+                               รหัสนักศึกษา: ${Id}
+                            </td>
+                            <td>
+                               ${faculty}
                             </td>
                          </tr>
                       </table>
                    </td>
                 </tr>
-                <tr class="heading">
-                   <td>Bought items:</td>
-                   <td>Price</td>
-                </tr>
-                <tr class="item">
-                   <td>First item:</td>
-                   <td>${price1}$</td>
-                </tr>
-                <tr class="item">
-                   <td>Second item:</td>
-                   <td>${price2}$</td>
-                </tr>
+                
              </table>
              <br />
-             <h1 class="justify-center">Total price: ${parseInt(price1) + parseInt(price2)}$</h1>
           </div>
        </body>
     </html>
